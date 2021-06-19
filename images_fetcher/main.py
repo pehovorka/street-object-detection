@@ -19,12 +19,6 @@ def get_images_from_all_cameras():
     for camera in cameras:
         camera_url = f"https://bezpecnost.praha.eu/Intens.CrisisPortalInfrastructureApp/cameras/{camera['id']}/image?"
         download_decode_save_image(camera_url, camera['name'], "images")
-        # req = urllib.request.Request(camera_url, data=None, headers={
-        #     "User-Agent": "Chrome"})
-        # res = urllib.request.urlopen(req)
-        # base64image = json.load(res)['contentBase64']
-        # with open(f"{camera['name']}.png", "wb") as fh:
-        #     fh.write(base64.b64decode(base64image))
 
 
 def download_decode_save_image(url: str, name: str = "image", path: str = ".",):
@@ -33,7 +27,7 @@ def download_decode_save_image(url: str, name: str = "image", path: str = ".",):
     res = urllib.request.urlopen(req)
     base64image = json.load(res)['contentBase64']
 
-    filename = f"{path}/{name}.png"
+    filename = f"{path}/{name}.jpg"
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     with open(filename, "wb") as fh:
         fh.write(base64.b64decode(base64image))
@@ -45,7 +39,7 @@ def download_decode_save_to_bucket_image(url: str, name: str = "image", bucket: 
 
     storage_client = storage.Client(project="ml-semestralka")
     bucket = storage_client.get_bucket(bucket)
-    blob = bucket.blob(f'{name}.png')
+    blob = bucket.blob(f'{name}.jpg')
 
     req = urllib.request.Request(url, data=None, headers={
         "User-Agent": "Chrome"})
@@ -53,12 +47,12 @@ def download_decode_save_to_bucket_image(url: str, name: str = "image", bucket: 
     base64image = json.load(res)['contentBase64']
     file = base64.b64decode(base64image)
 
-    temp_location = "/tmp/image.png"
+    temp_location = "/tmp/image.jpg"
     os.makedirs(os.path.dirname(temp_location), exist_ok=True)
     with open(temp_location, "wb") as fh:
         fh.write(file)
-    with open(temp_location, 'rb') as png:
-        blob.upload_from_file(png, True, None, "image/png")
+    with open(temp_location, 'rb') as jpg:
+        blob.upload_from_file(jpg, True, None, "image/jpg")
 
 
 def download_national_theatre_image(data=None, context=None):
