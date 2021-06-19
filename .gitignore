@@ -3,3 +3,5 @@
 /images_fetcher/images
 __pycache__
 /dataset/theatre_dataset_images
+/dataset/theatre_dataset_images.zip
+/tf_output
