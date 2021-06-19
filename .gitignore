@@ -1,0 +1,5 @@
+.ipynb_checkpoints
+/dataset/*.mp4
+/dataset/theatre_dataset_images/*.jpg
+/images_fetcher/images
+__pycache__

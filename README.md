@@ -1,0 +1,1 @@
+# Detekce exponovaných časů
