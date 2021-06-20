@@ -1,5 +1,11 @@
 # Detekce osob a vozidel pomocí TensorFlow Object Detection API
 
+## Definice problému
+
+Analýza hustoty automobilového provozu a pohybu osob je důležitým prvkem tzv. chytrých měst. Data získaná takovou analýzou se mohou využít pro spoustu účelů, například pro plánování úklidu a oprav ulic, detekci anomálií a podobně. Města mají k dispozici stovky různých kamer, které by k takovému účelu bylo možné využít.
+
+Tato práce slouží jako proof of concept, který má za úkol ukázat, že je možné hustotu provozu a pohybu osob poměrně spolehlivě získávat z již existujících kamer a implementace takového řešení ani nemusí být příliš složitá.
+
 ## Dataset
 
 Na webu [bezpecnost.praha.eu](https://bezpecnost.praha.eu/mapy/kamery) jsou k dispozici záběry bezpečnostních kamer po celé Praze. Pro účely této semestrální práce jsem si vybral kameru, které se nachází [na křižovatce u Národního divadla](https://mapy.cz/s/cabanukoza). Během jejího výběru se mi zalíbil její záběr, který snímal část křižovatky a přilehlý přechod pro chodce.
@@ -10,10 +16,16 @@ Několik dní po začátku snímání jsem při kontrole funkčnosti zjistil, ž
 
 Zip s celým datasetem lze stáhnout [zde](https://vse-my.sharepoint.com/:u:/g/personal/hovp01_vse_cz/EWZGoaK7jbxEsKT12tRn87gBGdICTHcTGryvv2qo-DDXJA?e=6Oy0HR). Stačí ho rozbalit ve složce [`/dataset`](/dataset)
 
+### Vizualizace a prozkoumání datasetu
+
 Abych mohl vybrat nejvhodnější období, ve kterém se neměnil záběr a nedocházelo k častým výpadkům, složil jsem ze snímků časosběrné video. Využil jsem k tomu nástroj FFmpeg. Bash skript, který se o vytvoření videa z jednotlivých snímků stará lze nalézt [zde](./dataset/generate_video.sh). Jeho součástí je i přidání textu s časem pořízení konkrétního snímku přímo do videa. Video bylo upscalováno na vyšší rozlišení než je rozlišení původních snímků. K tomuto kroku bylo přistoupeno kvůli YouTube kompresi, která je u videí s nižším rozlišením příliš agresivní.
 
-Výsledné video je možné vidět zde:
+Výsledné časosběrné video je možné vidět zde:
 [![Theatre timelapse](https://i.ytimg.com/vi/043zAO5q1bg/maxresdefault.jpg)](https://youtu.be/043zAO5q1bg "Theatre timelapse")
+
+## Výběr modelu
+
+Nebylo v mých silách natrénovat vlastní model, který by byl dostatečně kvalitní. Proto jsem vybíral z předtrénovaných modelů z [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Nakonec jsem zvolil model `EfficientDet D5` který je dostatečně přesný a přitom ještě poměrně rychlý. Zpracování jednoho snímku s rozměry 720×576px trvalo na GPU Nvidia GTX 1060 6GB v průměru 0,96 sekundy, zpracování celého jednoho dne proto trvalo okolo 23 minut.
 
 ## Výsledky
 
@@ -51,13 +63,13 @@ Výsledné video je možné vidět zde:
 
 ![2021-05-23](./assets/2021-05-23_chart.png)
 
-Časosběrné video se všemi detekcemi:
+**Časosběrné video se všemi detekcemi**
+
 [![Theatre timelapse 2021-05-23](https://i.ytimg.com/vi/C1Z0GIxqxRU/maxresdefault.jpg)](https://youtu.be/C1Z0GIxqxRU "Theatre timelapse 2021-05-23")
 
 ### 4. 6. 2021 (pátek, záběr na střed křižovatky a vzdálený přechod)
 
 ```
-
     people  cars  bicycles  dogs  buses  trains
 0       44    80         1     0      1       5
 1       15    65         0     0      1       3
@@ -95,5 +107,6 @@ Výsledné video je možné vidět zde:
 Projíždějící tramvaje byly nejčastěji rozpoznány jako instance třídy `train`, v některých případech však byly rozpoznány jako třída `bus`. Na následujícím grafu jsou proto zobrazeny obě třídy najednou.
 ![2021-06-04 public transport](./assets/2021-06-04_chart_public_transport.png)
 
-Časosběrné video se všemi detekcemi:
+**Časosběrné video se všemi detekcemi**
+
 [![Theatre timelapse 2021-06-04](https://i.ytimg.com/vi/DByjZ2WLxfk/maxresdefault.jpg)](https://youtu.be/DByjZ2WLxfk "Theatre timelapse 2021-06-04")
