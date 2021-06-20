@@ -20,7 +20,7 @@ Zip s celým datasetem lze stáhnout [zde](https://vse-my.sharepoint.com/:u:/g/p
 
 Abych mohl vybrat nejvhodnější období, ve kterém se neměnil záběr a nedocházelo k častým výpadkům, složil jsem ze snímků časosběrné video. Využil jsem k tomu nástroj FFmpeg. Bash skript, který se o vytvoření videa z jednotlivých snímků stará lze nalézt [zde](./dataset/generate_video.sh). Jeho součástí je i přidání textu s časem pořízení konkrétního snímku přímo do videa. Video bylo upscalováno na vyšší rozlišení než je rozlišení původních snímků. K tomuto kroku bylo přistoupeno kvůli YouTube kompresi, která je u videí s nižším rozlišením příliš agresivní.
 
-**Výsledné časosběrné video**
+**Výsledné časosběrné video (kliknutím se spustí přehrávání na YouTube)**
 
 [![Theatre timelapse](https://i.ytimg.com/vi/043zAO5q1bg/maxresdefault.jpg)](https://youtu.be/043zAO5q1bg "Theatre timelapse")
 
@@ -72,7 +72,7 @@ Jako práh minimálního skóre detekce byla zvolena hodnota 40%. To zaručilo m
 
 ![2021-05-23](./assets/2021-05-23_chart.png)
 
-**Časosběrné video se všemi detekcemi**
+**Časosběrné video se všemi detekcemi (kliknutím se spustí přehrávání na YouTube)**
 
 [![Theatre timelapse 2021-05-23](https://i.ytimg.com/vi/C1Z0GIxqxRU/maxresdefault.jpg)](https://youtu.be/C1Z0GIxqxRU "Theatre timelapse 2021-05-23")
 
@@ -118,7 +118,7 @@ Jako práh minimálního skóre detekce byla zvolena hodnota 40%. To zaručilo m
 Projíždějící tramvaje byly nejčastěji rozpoznány jako instance třídy `train`, v některých případech však byly rozpoznány jako třída `bus`. Na následujícím grafu jsou proto zobrazeny instance obou tříd najednou.
 ![2021-06-04 public transport](./assets/2021-06-04_chart_public_transport.png)
 
-**Časosběrné video se všemi detekcemi**
+**Časosběrné video se všemi detekcemi (kliknutím se spustí přehrávání na YouTube)**
 
 [![Theatre timelapse 2021-06-04](https://i.ytimg.com/vi/DByjZ2WLxfk/maxresdefault.jpg)](https://youtu.be/DByjZ2WLxfk "Theatre timelapse 2021-06-04")
 
