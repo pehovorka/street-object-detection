@@ -12,7 +12,7 @@ Na webu [bezpecnost.praha.eu](https://bezpecnost.praha.eu/mapy/kamery) jsou k di
 
 Vytvořil jsem si proto [jednoduchou funkci](./images_fetcher/main.py), kterou jsem následně nasadil do Google Cloudu. Jedinou její činností je každou minutu stáhnout snímek z kamery, pojmenovat daný soubor aktuálním časem a uložit ho do Cloud Storage. Takto jsem sbíral snímky od 21. května až do 16. června. Nasbíral jsem více než 36 tisíc obrázků.
 
-Několik dní po začátku snímání jsem při kontrole funkčnosti zjistil, že jsem si vybral kameru, která není statická. Její záběr se během období sbírání dat několikrát změnil. Proto nemohu dělat žádnou dlouhodobější analýzu, která by například srovnávala pohyb osob v jednotlivých dnech v týdnu. Dalším problémem, na který jsem narazil, byly výpadky kamery. Někdy vypadla jen na minutu, jindy i na několik dní.
+Několik dní po začátku snímání jsem při kontrole funkčnosti zjistil, že jsem si vybral kameru, která není statická. Její záběr se během období sbírání dat několikrát změnil. Proto nemohu dělat žádnou dlouhodobější analýzu, která by například porovnávala pohyb osob v jednotlivých dnech v týdnu. Dalším problémem, na který jsem narazil, byly výpadky kamery. Někdy vypadla jen na minutu, jindy i na několik hodin.
 
 Zip s celým datasetem lze stáhnout [zde](https://vse-my.sharepoint.com/:u:/g/personal/hovp01_vse_cz/EWZGoaK7jbxEsKT12tRn87gBGdICTHcTGryvv2qo-DDXJA?e=6Oy0HR). Stačí ho rozbalit ve složce [`/dataset`](/dataset)
 
@@ -20,8 +20,11 @@ Zip s celým datasetem lze stáhnout [zde](https://vse-my.sharepoint.com/:u:/g/p
 
 Abych mohl vybrat nejvhodnější období, ve kterém se neměnil záběr a nedocházelo k častým výpadkům, složil jsem ze snímků časosběrné video. Využil jsem k tomu nástroj FFmpeg. Bash skript, který se o vytvoření videa z jednotlivých snímků stará lze nalézt [zde](./dataset/generate_video.sh). Jeho součástí je i přidání textu s časem pořízení konkrétního snímku přímo do videa. Video bylo upscalováno na vyšší rozlišení než je rozlišení původních snímků. K tomuto kroku bylo přistoupeno kvůli YouTube kompresi, která je u videí s nižším rozlišením příliš agresivní.
 
-Výsledné časosběrné video je možné vidět zde:
+**Výsledné časosběrné video**
+
 [![Theatre timelapse](https://i.ytimg.com/vi/043zAO5q1bg/maxresdefault.jpg)](https://youtu.be/043zAO5q1bg "Theatre timelapse")
+
+Nakonec byly jako nejvhodnější k analýze provozu vybrány dva dny – 23. 5. 2021 a 4. 6. 2021.
 
 ## Příprava dat
 
@@ -112,7 +115,7 @@ Jako práh minimálního skóre detekce byla zvolena hodnota 40%. To zaručilo m
 
 **Provoz MHD**
 
-Projíždějící tramvaje byly nejčastěji rozpoznány jako instance třídy `train`, v některých případech však byly rozpoznány jako třída `bus`. Na následujícím grafu jsou proto zobrazeny obě třídy najednou.
+Projíždějící tramvaje byly nejčastěji rozpoznány jako instance třídy `train`, v některých případech však byly rozpoznány jako třída `bus`. Na následujícím grafu jsou proto zobrazeny instance obou tříd najednou.
 ![2021-06-04 public transport](./assets/2021-06-04_chart_public_transport.png)
 
 **Časosběrné video se všemi detekcemi**
@@ -121,8 +124,8 @@ Projíždějící tramvaje byly nejčastěji rozpoznány jako instance třídy `
 
 ## Závěr
 
-Tato semestrální práce prokázala, že jsou modely rozpoznávání objektů na velice vysoké úrovni. Z přiložených časosběrných videí lze pozorovat, že je detekce až překvapivě přesná a nedochází při ní k výrazným chybám. Samotné zpracování obrázků je i na průměrné grafické kartě dostatečně rychlé. Z těchto důvodů si dovolím konstatovat, že by bylo možné podobné řešení použít i v „produkčním prostředí.“
+Tato semestrální práce prokázala, že jsou modely rozpoznávání objektů na velice vysoké úrovni. Z přiložených časosběrných videí lze pozorovat, že je detekce až překvapivě přesná a nedochází při ní k výrazným chybám. Samotné zpracování obrázků je i na průměrné grafické kartě dostatečně rychlé. Z těchto důvodů se domnívám, že by bylo možné podobné řešení použít i v „produkčním prostředí.“
 
 Pro dlouhodobé analýzy provozu by ale bylo nutné využít stabilních kamer, které nemění úhel záběru. Taktéž by bylo nutné zajistit, aby nedocházelo k jejich výpadkům.
 
-Tím jsem popsal problémy, které se při vypracování této práce vyskytly. Původně bylo mým záměrem porovnávat mezi sebou nejen hodinové intervaly během jednoho dne, ale i jednotlivé dny v týdnu. Jelikož ale kamera měnila každých několik dní svůj úhel záběru a v některých dnech značnou část dne nefungovala, nebylo toto porovnání možné. Pro dlouhodobý výzkum by bylo nutné najít stabilní kameru se spolehlivým přenosem.
+Tím jsem popsal problémy, které se při vypracování této práce vyskytly. Původně bylo mým záměrem porovnávat mezi sebou nejen hodinové intervaly během jednoho dne, ale i jednotlivé dny v týdnu. Jelikož ale kamera měnila každých několik dní svůj úhel záběru a v některých dnech jeho značnou část nefungovala, nebylo toto porovnání možné. Pro dlouhodobý výzkum by bylo nutné najít stabilní kameru se spolehlivým přenosem.
