@@ -33,8 +33,6 @@ def download_decode_save_image(url: str, name: str = "image", path: str = ".",):
         fh.write(base64.b64decode(base64image))
 
 
-# get_images_from_all_cameras()
-
 def download_decode_save_to_bucket_image(url: str, name: str = "image", bucket: str = "theatre_dataset_images"):
 
     storage_client = storage.Client(project="ml-semestralka")
@@ -61,8 +59,3 @@ def download_national_theatre_image(data=None, context=None):
     download_decode_save_to_bucket_image(
         url, current_time.strftime("%Y-%m-%d %H:%M:%S"))
     return "Success!"
-
-
-# print(download_national_theatre_image())
-
-get_images_from_all_cameras()

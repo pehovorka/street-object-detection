@@ -10,7 +10,7 @@ Tato práce slouží jako proof of concept, který má za úkol ukázat, že je 
 
 Na webu [bezpecnost.praha.eu](https://bezpecnost.praha.eu/mapy/kamery) jsou k dispozici záběry bezpečnostních kamer po celé Praze. Pro účely této semestrální práce jsem si vybral kameru, které se nachází [na křižovatce u Národního divadla](https://mapy.cz/s/cabanukoza). Během jejího výběru se mi zalíbil její záběr, který snímal část křižovatky a přilehlý přechod pro chodce.
 
-Vytvořil jsem si proto [jednoduchou funkci](./images_fetcher/main.py), kterou jsem následně nasadil do Google Cloudu. Jedinou její činností je každou minutu stáhnout snímek z kamery, pojmenovat daný soubor aktuálním časem a uložit ho do Cloud Storage. Takto jsem sbíral snímky od 21. května až do 16. června. Nasbíral jsem více než 36 tisíc obrázků.
+Vytvořil jsem si proto [jednoduchý program](./images_fetcher/main.py), který jsem následně nasadil do Google Cloudu. Každou minutu se volala metoda `download_national_theatre_image()`, která stáhla snímek z kamery, pojmenovala daný soubor aktuálním časem a uložila ho do Cloud Storage. Takto jsem sbíral snímky od 21. května až do 16. června. Nasbíral jsem více než 36 tisíc obrázků.
 
 Několik dní po začátku snímání jsem při kontrole funkčnosti zjistil, že jsem si vybral kameru, která není statická. Její záběr se během období sbírání dat několikrát změnil. Proto nemohu dělat žádnou dlouhodobější analýzu, která by například porovnávala pohyb osob v jednotlivých dnech v týdnu. Dalším problémem, na který jsem narazil, byly výpadky kamery. Někdy vypadla jen na minutu, jindy i na několik hodin.
 
