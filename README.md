@@ -47,36 +47,53 @@ Výsledné video je možné vidět zde:
 23      37    22         2     0
 ```
 
+**Pohyb lidí, aut, cyklistů a psů**
+
 ![2021-05-23](./assets/2021-05-23_chart.png)
+
+Časosběrné video se všemi detekcemi:
+[![Theatre timelapse 2021-05-23](https://i.ytimg.com/vi/C1Z0GIxqxRU/maxresdefault.jpg)](https://youtu.be/C1Z0GIxqxRU "Theatre timelapse 2021-05-23")
 
 ### 4. 6. 2021 (pátek, záběr na střed křižovatky a vzdálený přechod)
 
 ```
-    people  cars  bicycles  dogs
-0       44    80         1     0
-1       15    65         0     0
-2        5    36         0     0
-3        6    20         0     0
-4        4    36         1     0
-5       18    26         2     0
-6       21    52         3     0
-7       50   134         7     1
-8       59   209         8     0
-9       88   191        10     0
-10      79   191         5     1
-11     127   182         2     0
-12     121   174         0     0
-13     205   206         3     0
-14     216   150        10     0
-15     231   236         8     1
-16     243   230        17     0
-17     302   159        18     0
-18     330   165         6     0
-19     349   156        11     1
-20     357   173         6     1
-21     292   144         2     0
-22     316   180         3     0
-23     151   136         1     0
+
+    people  cars  bicycles  dogs  buses  trains
+0       44    80         1     0      1       5
+1       15    65         0     0      1       3
+2        5    36         0     0      0       6
+3        6    20         0     0      1       3
+4        4    36         1     0      1       6
+5       18    26         2     0      4       5
+6       21    52         3     0      7      25
+7       50   134         7     1      6      21
+8       59   209         8     0     16      17
+9       88   191        10     0     13      18
+10      79   191         5     1      6      11
+11     127   182         2     0     11      14
+12     121   174         0     0      5      25
+13     205   206         3     0     10      13
+14     216   150        10     0     10      16
+15     231   236         8     1      9      17
+16     243   230        17     0     15      17
+17     302   159        18     0      9      15
+18     330   165         6     0      6      13
+19     349   156        11     1      6      17
+20     357   173         6     1      6      13
+21     292   144         2     0      6      15
+22     316   180         3     0      3       7
+23     151   136         1     0      1       9
+
 ```
 
+**Pohyb lidí, aut a cyklistů**
+
 ![2021-06-04](./assets/2021-06-04_chart.png)
+
+**Provoz MHD**
+
+Projíždějící tramvaje byly nejčastěji rozpoznány jako instance třídy `train`, v některých případech však byly rozpoznány jako třída `bus`. Na následujícím grafu jsou proto zobrazeny obě třídy najednou.
+![2021-06-04 public transport](./assets/2021-06-04_chart_public_transport.png)
+
+Časosběrné video se všemi detekcemi:
+[![Theatre timelapse 2021-06-04](https://i.ytimg.com/vi/DByjZ2WLxfk/maxresdefault.jpg)](https://youtu.be/DByjZ2WLxfk "Theatre timelapse 2021-06-04")
