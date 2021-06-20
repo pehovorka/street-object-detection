@@ -23,9 +23,15 @@ Abych mohl vybrat nejvhodnější období, ve kterém se neměnil záběr a nedo
 Výsledné časosběrné video je možné vidět zde:
 [![Theatre timelapse](https://i.ytimg.com/vi/043zAO5q1bg/maxresdefault.jpg)](https://youtu.be/043zAO5q1bg "Theatre timelapse")
 
-## Výběr modelu
+## Příprava dat
 
-Nebylo v mých silách natrénovat vlastní model, který by byl dostatečně kvalitní. Proto jsem vybíral z předtrénovaných modelů z [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Nakonec jsem zvolil model `EfficientDet D5`, který je dostatečně přesný a přitom ještě poměrně rychlý. Zpracování jednoho snímku s rozměry 720×576px trvalo na GPU Nvidia GTX 1060 6GB v průměru 0,96 sekundy, zpracování celého jednoho dne proto trvalo okolo 23 minut.
+Snímky nebylo nutné po samotném pořízení nijak upravovat. Mají rozměry 720×576px, což se ukázalo jako dobrý kompromis mezi rychlostí zpracování a zachováním detailů. Snímky byly při pořízení uloženy s názvem ve formátu `yyyy-mm-dd hh:mm:ss`, což umožnilo jejich snadné následné zpracování.
+
+## Výběr modelu a nastavení parametrů
+
+Nebylo v mých silách natrénovat vlastní model, který by byl dostatečně kvalitní. Proto jsem vybíral z předtrénovaných modelů z [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Nakonec jsem zvolil model `EfficientDet D5`, který je dostatečně přesný a přitom ještě poměrně rychlý. Zpracování jednoho snímku s rozměry 720×576px trvalo na GPU Nvidia GTX 1060 6GB v průměru 1,7 sekundy, zpracování celého jednoho dne proto trvalo okolo 40 minut.
+
+Jako práh minimálního skóre detekce byla zvolena hodnota 40%. To zaručilo minimální chybovost při stále vysoké citlivosti.
 
 ## Výsledky
 
