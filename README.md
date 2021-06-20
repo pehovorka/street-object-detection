@@ -25,7 +25,7 @@ Výsledné časosběrné video je možné vidět zde:
 
 ## Výběr modelu
 
-Nebylo v mých silách natrénovat vlastní model, který by byl dostatečně kvalitní. Proto jsem vybíral z předtrénovaných modelů z [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Nakonec jsem zvolil model `EfficientDet D5` který je dostatečně přesný a přitom ještě poměrně rychlý. Zpracování jednoho snímku s rozměry 720×576px trvalo na GPU Nvidia GTX 1060 6GB v průměru 0,96 sekundy, zpracování celého jednoho dne proto trvalo okolo 23 minut.
+Nebylo v mých silách natrénovat vlastní model, který by byl dostatečně kvalitní. Proto jsem vybíral z předtrénovaných modelů z [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Nakonec jsem zvolil model `EfficientDet D5`, který je dostatečně přesný a přitom ještě poměrně rychlý. Zpracování jednoho snímku s rozměry 720×576px trvalo na GPU Nvidia GTX 1060 6GB v průměru 0,96 sekundy, zpracování celého jednoho dne proto trvalo okolo 23 minut.
 
 ## Výsledky
 
@@ -66,6 +66,8 @@ Nebylo v mých silách natrénovat vlastní model, který by byl dostatečně kv
 **Časosběrné video se všemi detekcemi**
 
 [![Theatre timelapse 2021-05-23](https://i.ytimg.com/vi/C1Z0GIxqxRU/maxresdefault.jpg)](https://youtu.be/C1Z0GIxqxRU "Theatre timelapse 2021-05-23")
+
+---
 
 ### 4. 6. 2021 (pátek, záběr na střed křižovatky a vzdálený přechod)
 
@@ -110,3 +112,11 @@ Projíždějící tramvaje byly nejčastěji rozpoznány jako instance třídy `
 **Časosběrné video se všemi detekcemi**
 
 [![Theatre timelapse 2021-06-04](https://i.ytimg.com/vi/DByjZ2WLxfk/maxresdefault.jpg)](https://youtu.be/DByjZ2WLxfk "Theatre timelapse 2021-06-04")
+
+## Závěr
+
+Tato semestrální práce prokázala, že jsou modely rozpoznávání objektů na velice vysoké úrovni. Z přiložených časosběrných videí lze pozorovat, že je detekce až překvapivě přesná a nedochází při ní k výrazným chybám. Samotné zpracování obrázků je i na průměrné grafické kartě dostatečně rychlé. Z těchto důvodů si dovolím konstatovat, že by bylo možné podobné řešení použít i v „produkčním prostředí.“
+
+Pro dlouhodobé analýzy provozu by ale bylo nutné využít stabilních kamer, které nemění úhel záběru. Taktéž by bylo nutné zajistit, aby nedocházelo k jejich výpadkům.
+
+Tím jsem popsal problémy, které se při vypracování této práce vyskytly. Původně bylo mým záměrem porovnávat mezi sebou nejen hodinové intervaly během jednoho dne, ale i jednotlivé dny v týdnu. Jelikož ale kamera měnila každých několik dní svůj úhel záběru a v některých dnech značnou část dne nefungovala, nebylo toto porovnání možné. Pro dlouhodobý výzkum by bylo nutné najít stabilní kameru se spolehlivým přenosem.
