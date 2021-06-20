@@ -6,7 +6,7 @@ Na webu [bezpecnost.praha.eu](https://bezpecnost.praha.eu/mapy/kamery) jsou k di
 
 Vytvořil jsem si proto [jednoduchou funkci](./images_fetcher/main.py), kterou jsem následně nasadil do Google Cloudu. Jedinou její činností je každou minutu stáhnout snímek z kamery, pojmenovat daný soubor aktuálním časem a uložit ho do Cloud Storage. Takto jsem sbíral snímky od 21. května až do 16. června. Nasbíral jsem více než 36 tisíc obrázků.
 
-Několik dní po začátku snímání jsem při kontrole funkčnosti zjistil, že jsem si vybral kameru, která není statická. Její záběr se během období sbírání dat několikrát změnil. Proto nemohu dělat žádnou dlouhodobější analýzu, která by například srovnávala pohyb osob v jednotlivých dnech v týdnu. Dalším problémem, na který jsem narazil, byly občasné výpadky kamery. Někdy vypadla jen na minutu, jindy i na několik dní.
+Několik dní po začátku snímání jsem při kontrole funkčnosti zjistil, že jsem si vybral kameru, která není statická. Její záběr se během období sbírání dat několikrát změnil. Proto nemohu dělat žádnou dlouhodobější analýzu, která by například srovnávala pohyb osob v jednotlivých dnech v týdnu. Dalším problémem, na který jsem narazil, byly výpadky kamery. Někdy vypadla jen na minutu, jindy i na několik dní.
 
 Zip s celým datasetem lze stáhnout [zde](https://vse-my.sharepoint.com/:u:/g/personal/hovp01_vse_cz/EWZGoaK7jbxEsKT12tRn87gBGdICTHcTGryvv2qo-DDXJA?e=6Oy0HR). Stačí ho rozbalit ve složce [`/dataset`](/dataset)
 
@@ -14,3 +14,37 @@ Abych mohl vybrat nejvhodnější období, ve kterém se neměnil záběr a nedo
 
 Výsledné video je možné vidět zde:
 [![Theatre timelapse](https://i.ytimg.com/vi/043zAO5q1bg/maxresdefault.jpg)](https://youtu.be/043zAO5q1bg "Theatre timelapse")
+
+## Výsledky
+
+### 23. 5. 2021 (neděle, záběr na přechod a část křižovatky)
+
+```
+    people  cars  bicycles  dogs
+0       60    52         0     0
+1       42    23         0     0
+2        9    18         0     0
+3        9    20         0     0
+4        5     9         0     0
+5        3    13         1     0
+6        9    15         1     0
+7       12    23         4     1
+8       30    26         2     0
+9       64    54         4     1
+10     144    64        14     0
+11     178    80         1     0
+12     236    72        11     1
+13     318    62        20     2
+14     354    86        19     1
+15     215   102        11     0
+16     363    78        18     0
+17     424   101        13     1
+18     467    89        14     3
+19     442    79         7     2
+20     394    90        13     2
+21     236    66         2     0
+22      96    31         1     0
+23      37    22         2     0
+```
+
+![2021-05-23](./assets/2021-05-23_chart.png)
